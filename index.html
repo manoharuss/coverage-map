@@ -21,6 +21,7 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/manoharuss/cj6agqsrs3a7w2spdd4dvupwn', //stylesheet location
     center: [0, 0], // starting position
     zoom: 2.1 // starting zoom
+    hash: true // add zoom and coordinates to url
 });
 
 
@@ -40,7 +41,7 @@ map.on('click', function (e) {
     var popup = new mapboxgl.Popup()
         .setLngLat(feature.geometry.coordinates)
         .setHTML(feature.properties.user)
-        .setHTML('<h5>'+feature.properties.user+'</h5></br><b>This text is bold</b><a href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a>')
+        .setHTML('<b>OSM User: </b><a target="_blank" href="https://www.openstreetmap.org/user/'+feature.properties.user+'">'+feature.properties.user+'</a></br><b>OSMCha: </b><a target="_blank" href="https://osmcha.mapbox.com/changesets/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a></br><b>OSM Changeset: </b><a target="_blank" href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a>')
         .addTo(map);
 });
 
