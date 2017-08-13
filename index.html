@@ -41,7 +41,7 @@ map.on('click', function (e) {
     var popup = new mapboxgl.Popup()
         .setLngLat(feature.geometry.coordinates)
         .setHTML(feature.properties.user)
-        .setHTML('<b>OSM User: </b><a target="_blank" href="https://www.openstreetmap.org/user/'+feature.properties.user+'">'+feature.properties.user+'</a></br><b>OSMCha: </b><a target="_blank" href="https://osmcha.mapbox.com/changesets/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a></br><b>OSM Changeset: </b><a target="_blank" href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a>')
+        .setHTML('<b>OSM User: </b><a target="_blank" href="https://www.openstreetmap.org/user/'+feature.properties.user+'">'+feature.properties.user+'</a></br><b>OSMCha: </b><a target="_blank" href="https://osmcha.mapbox.com/changesets/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a></br><b>OSM Changeset: </b><a target="_blank" href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a></br><b>Verified by: </b><a target="_blank" href="https://www.openstreetmap.org/user/'+feature.properties.check_user+'">'+feature.properties.check_user+'</a>')
         .addTo(map);
 });
 
