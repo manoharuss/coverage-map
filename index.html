@@ -40,7 +40,7 @@ map.on('click', function (e) {
     var popup = new mapboxgl.Popup()
         .setLngLat(feature.geometry.coordinates)
         .setHTML(feature.properties.user)
-        .setHTML('<h5>'+feature.properties.user+'</h5></br><h5>"OSM Changeset:"</h5><a href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a>')
+        .setHTML('<h5>'+feature.properties.user+'</h5></br><b>This text is bold</b><a href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a>')
         .addTo(map);
 });
 
