@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset='utf-8' />
     <title>Coverage-Map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
     <style>
         body { margin:0; padding:0; }
-        .top{position:absolute; top:0; left:100px;bottom:20px; width:100%;}
         #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
 </head>
@@ -16,8 +15,9 @@
 <div id='map'></div>
 
 
-<style>
 
+
+<style>
 .legend {
     background-color: #fff;
     border-radius: 3px;
@@ -29,11 +29,9 @@
     right: 10px;
     z-index: 1;
 }
-
 .legend h4 {
     margin: 0 0 10px;
 }
-
 .legend div span {
     border-radius: 50%;
     display: inline-block;
@@ -41,7 +39,6 @@
     margin-right: 5px;
     width: 10px;
 }
-
 </style>
 
 
@@ -54,17 +51,6 @@
 
 
 <script>
-/*
-var stateLegendEl = document.getElementById('state-legend');
-map.on('zoom', function() {
-    if (map.getZoom() > zoomThreshold) {
-        stateLegendEl.style.display = 'none';
-    } else {
-        stateLegendEl.style.display = 'block';
-    }
-});
-*/
-
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFub2hhcnVzcyIsImEiOiJjaW1mMDZiYnIwMTU2dGlsdm5pMWpoYm5iIn0.X6u7Ke6rPN5ap2Na15HItw';
 var map = new mapboxgl.Map({
     container: 'map', // container id
@@ -73,19 +59,13 @@ var map = new mapboxgl.Map({
     zoom: 2.1, // starting zoom
     hash: true // add zoom and coordinates to url
 });
-
-
-
 map.on('click', function (e) {
     var features = map.queryRenderedFeatures(e.point, { layers: ['all-changesets'] });
-
     if (!features.length) {
         return;
     }
-
     var feature = features[0];
     console.log(feature.properties.changesetID);
-
     // Populate the popup and set its coordinates
     // based on the feature found.
     var popup = new mapboxgl.Popup()
@@ -94,12 +74,6 @@ map.on('click', function (e) {
         .setHTML('<b>OSM User: </b><a target="_blank" href="https://www.openstreetmap.org/user/'+feature.properties.user+'">'+feature.properties.user+'</a></br><b>OSMCha: </b><a target="_blank" href="https://osmcha.mapbox.com/changesets/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a></br><b>OSM Changeset: </b><a target="_blank" href="http://www.openstreetmap.org/changeset/'+feature.properties.changesetID+'">'+feature.properties.changesetID+'</a></br><b>Verified by: </b><a target="_blank" href="https://www.openstreetmap.org/user/'+feature.properties.check_user+'">'+feature.properties.check_user+'</a>')
         .addTo(map);
 });
-
-
-
-
-
-
 </script>
 
 </body>
